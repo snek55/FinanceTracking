@@ -1,0 +1,11 @@
+﻿@page "/ColorPicker"
+
+<br /><input type="color" @bind="CommBackgroundColor" @bind:event="oninput"> Application background color
+<br /><input type="color" @bind="FontBackgroundColor" @bind:event="oninput"> Font background color
+<br /><input type="color" @bind="FontForegroundColor" @bind:event="oninput"> Font color
+
+@code{
+    private string CommBackgroundColor { get; set; }
+    private string FontBackgroundColor { get; set; }
+    private string FontForegroundColor { get; set; }
+}
