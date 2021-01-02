@@ -1,0 +1,33 @@
+﻿@page "/"
+@using FinanceTracking.Entities
+
+
+<button @onclick="AddRow">Click</button>
+<TableTemplate Items="products">
+    <TableHeader>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@context.Name</td>
+        <td>@context.Quantity</td>
+        <td>@context.Total</td>
+    </RowTemplate>
+</TableTemplate>
+
+@code {
+    private List<Product> products = new()
+    {
+        new() { Id = 2, Name = "Cheesecake", Quantity = 99, Price = 100 },
+        new() { Id = 4, Name = "Apples", Quantity = (decimal) 0.6, Price = 100 },
+        new() { Id = 7, Name = "Coca-Cola", Quantity = (decimal) 0.5, Price = 100 }
+    };
+
+    void AddRow()
+    {
+        products.Add(new Product{ Id = 4, Name = "Banana", Quantity = 6, Price = 120 });
+    }
+}
+
+
