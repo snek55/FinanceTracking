@@ -14,7 +14,7 @@ namespace FinanceTracking.Pages
         private string fontForegroundColor;
 
         [Inject]
-        private ISyncLocalStorageService localStorage1 { get; set; }
+        private ISyncLocalStorageService localStorage { get; set; }
         public string CommBackgroundColor
         {
             get => GetFromLocalStorage(nameof(CommBackgroundColor));
@@ -45,16 +45,12 @@ namespace FinanceTracking.Pages
 
         private void UpdateLocalStorage(string k, string v)
         {
-            
-            //Console.WriteLine(k);
-            //Console.WriteLine(v);
-            localStorage1.SetItem(k, v);
+            localStorage.SetItem(k, v);
         }
 
         private string GetFromLocalStorage(string k)
         {
-            //Console.WriteLine("Got:"+localStorage1.GetItem<string>(k).ToString());
-            return localStorage1.GetItem<string>(k).ToString();
+            return localStorage.GetItem<string>(k).ToString();
         }
     }
 }
