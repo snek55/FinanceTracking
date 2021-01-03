@@ -9,6 +9,7 @@ namespace FinanceTracking.Pages
 {
     public partial class ColorPicker
     {
+        private string defaultcolor = "#ffffff";
         private string commBackgroundColor;
         private string fontBackgroundColor;
         private string fontForegroundColor;
@@ -50,7 +51,9 @@ namespace FinanceTracking.Pages
 
         private string GetFromLocalStorage(string k)
         {
-            return localStorage.GetItem<string>(k).ToString();
+            if(localStorage.ContainKey(k))
+                return localStorage.GetItem<string>(k).ToString();
+            return defaultcolor;
         }
     }
 }
