@@ -1,0 +1,16 @@
+﻿<EditForm Model="@_product" OnValidSubmit="@HandleValidSubmit">
+    <p>
+        <label for="name">Name: </label>
+        <InputText id="name" @bind-Value="_product.Name" />
+    </p>
+    <p>
+        <label for="quantity">Quantity: </label>
+        <InputNumber id="quantity" @bind-Value="_product.Quantity" />
+    </p>
+    <p>
+        <label for="price">Price: </label>
+        <InputNumber id="price" @bind-Value="_product.Price" />
+    </p>
+
+    <button type="submit">Submit</button>
+</EditForm>
