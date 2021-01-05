@@ -5,11 +5,12 @@
 
     public partial class EditFormMainPage
     {
-        private readonly Product _product = new();
+        private readonly Shopping _shopping = new();
 
         private void HandleValidSubmit()
         {
-            TableMainPage.Products.Add(this._product.Clone<Product>());
+            // TODO: проверка валидации
+            new TableMainPage().AddTableListElement(this._shopping);
         }
     }
 }

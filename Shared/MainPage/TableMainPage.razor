@@ -1,12 +1,12 @@
-﻿<TableTemplate Items="Products">
+﻿<TableTemplate Items="Shopping">
     <TableHeader>
         <th>Name</th>
         <th>Quantity</th>
         <th>Total</th>
     </TableHeader>
     <RowTemplate>
-        <td>@context.Name</td>
-        <td>@context.Quantity</td>
-        <td>@context.Total</td>
+        <td>@context.Product.Name</td>
+        <td>@context.Quantity @GetUnitsMeasurement(context.Product.ProductMeasurement)</td>
+        <td>@context.Total <br> @context.Price/@GetUnitsMeasurement(context.Product.ProductMeasurement)</td>
     </RowTemplate>
 </TableTemplate>

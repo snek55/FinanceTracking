@@ -2,19 +2,36 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using Entities;
     using System.Linq;
+    using Entities;
+    using Enums;
+    using Extensions;
 
     public partial class TableMainPage
     {
-        public static ObservableCollection<Product> Products { get; } = new();
+        private static ObservableCollection<Shopping> Shopping { get; } = new();
 
         public TableMainPage()
         {
-            Products.CollectionChanged += (_, _) =>
+            Shopping.CollectionChanged += (_, _) => this.StateHasChanged();
+        }
+
+        public void AddTableListElement(Shopping product) {
+            var newItem = product.Clone<Shopping>();
+
+            Shopping.Add(newItem);
+        }
+
+        private string GetUnitsMeasurement(ProductMeasurement productMeasurement) {
+            switch (productMeasurement)
             {
-                this.StateHasChanged();
-            };
+                case ProductMeasurement.Volume:
+                    return "l";
+                case ProductMeasurement.Weight:
+                    return "kg";
+                default:
+                    return "pcs";
+            }
         }
     }
 }
