@@ -1,8 +1,6 @@
 ﻿namespace FinanceTracking.Shared.MainPage
 {
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Linq;
     using Entities;
     using Enums;
     using Extensions;

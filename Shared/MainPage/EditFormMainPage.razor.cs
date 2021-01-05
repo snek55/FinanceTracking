@@ -1,7 +1,6 @@
 ﻿namespace FinanceTracking.Shared.MainPage
 {
     using Entities;
-    using Extensions;
 
     public partial class EditFormMainPage
     {
