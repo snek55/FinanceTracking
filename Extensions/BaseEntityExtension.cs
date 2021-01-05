@@ -3,11 +3,11 @@
     using System.Text.Json;
     using Entities.Interfaces;
 
-    public static class BaseEntitiesExtension
+    public static class BaseEntityExtension
     {
-        public static T Clone<T>(this IBaseEntities baseEntities)
+        public static T Clone<T>(this IBaseEntity baseEntity)
         {
-            var str = JsonSerializer.Serialize(baseEntities, typeof(T));
+            var str = JsonSerializer.Serialize(baseEntity, typeof(T));
 
             return (T) JsonSerializer.Deserialize(str, typeof(T));
         }
