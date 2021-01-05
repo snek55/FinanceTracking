@@ -16,8 +16,8 @@ namespace FinanceTracking.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Количество
+        /// Тип продукта для определения едениц измерения
         /// </summary>
-        public decimal Quantity { get; set; }
+        public ProductMeasurement ProductMeasurement { get; set; }
     }
 }
