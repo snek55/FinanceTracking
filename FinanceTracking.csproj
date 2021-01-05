@@ -26,4 +26,13 @@
     <None Remove=".gitignore.local" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Shared\MainPage\TableMainPage.razor.cs">
+      <DependentUpon>TableMainPage.razor</DependentUpon>
+    </Compile>
+    <Compile Update="Shared\MainPage\EditFormMainPage.razor.cs">
+      <DependentUpon>EditFormMainPage.razor</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>
