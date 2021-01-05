@@ -1,9 +1,12 @@
-﻿namespace FinanceTracking.Entities
+namespace FinanceTracking.Entities
 {
+    using Enums;
     using Interfaces;
 
-    public class Product : IBaseEntities
-    {
+    /// <summary>
+    /// Продукт
+    /// </summary>
+    public class Product : IBaseEntity {
         /// <inheritdoc/>>
         public long Id { get; set; }
 
@@ -16,15 +19,5 @@
         /// Количество
         /// </summary>
         public decimal Quantity { get; set; }
-
-        /// <summary>
-        /// Цена
-        /// </summary>
-        public decimal Price { get; set; }
-
-        /// <summary>
-        /// Итоговая сумма
-        /// </summary>
-        public string Total => (Quantity * Price).ToString("F2");
     }
 }
