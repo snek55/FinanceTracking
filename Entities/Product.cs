@@ -1,4 +1,4 @@
-namespace FinanceTracking.Entities
+﻿namespace FinanceTracking.Entities
 {
     using Enums;
     using Interfaces;
