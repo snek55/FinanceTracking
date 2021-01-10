@@ -1,26 +1,32 @@
-﻿namespace FinanceTracking.Shared.MainPage
+namespace FinanceTracking.Shared.MainPage
 {
     using System.Collections.ObjectModel;
     using Entities;
     using Enums;
-    using Extensions;
+    using Microsoft.AspNetCore.Components;
 
     public partial class TableMainPage
     {
-        private static ObservableCollection<Shopping> Shopping { get; } = new();
+        private ObservableCollection<Shopping> _shopping;
 
-        public TableMainPage()
+        [Inject]
+        private ObservableCollection<Shopping> Shopping
         {
-            Shopping.CollectionChanged += (_, _) => this.StateHasChanged();
+            get => this._shopping;
+            set
+            {
+                this._shopping = value;
+                this.BindCollection();
+            }
         }
 
-        public void AddTableListElement(Shopping product) {
-            var newItem = product.Clone<Shopping>();
-
-            Shopping.Add(newItem);
+        private void BindCollection()
+        {
+            this._shopping.CollectionChanged += (_, _) => this.StateHasChanged();
         }
 
-        private string GetUnitsMeasurement(ProductMeasurement productMeasurement) {
+        private string GetUnitsMeasurement(ProductMeasurement productMeasurement)
+        {
             switch (productMeasurement)
             {
                 case ProductMeasurement.Volume:
