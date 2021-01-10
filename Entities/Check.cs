@@ -1,6 +1,7 @@
 ﻿namespace FinanceTracking.Entities
 {
     using System;
+    using System.Collections.Generic;
     using Interfaces;
 
     /// <summary>
@@ -11,12 +12,14 @@
         /// <inheritdoc>
         public long Id { get; set; }
 
-        /// <inheritdoc>
-        public Shopping Shopping { get; set; }
+        /// <summary>
+        /// Лист покупок
+        /// </summary>
+        public List<Shopping> Shopping { get; set; }
 
         /// <summary>
         /// Дата создания
         /// </summary>
-        public DateTime CreateDate => DateTime.UtcNow;
+        public DateTime CreateDate { get; set; }
     }
 }
