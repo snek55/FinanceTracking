@@ -8,7 +8,7 @@ root = true
 
 # Indentation and spacing
 indent_size = 4
-indent_style = space
+indent_style = tab
 tab_width = 4
 
 # New line preferences
@@ -19,7 +19,7 @@ insert_final_newline = false
 
 # Organize usings
 dotnet_separate_import_directive_groups = false
-dotnet_sort_system_directives_first = true
+dotnet_sort_system_directives_first = false
 file_header_template = unset
 
 # this. and Me. preferences
