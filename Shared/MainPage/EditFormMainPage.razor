@@ -1,0 +1,24 @@
+﻿@using FinanceTracking.Enums
+
+<EditForm Model="@_shopping" OnValidSubmit="@HandleValidSubmit">
+    <p>
+        <label for="name">Name: </label>
+        <InputText id="name" @bind-Value="_shopping.Product.Name" />
+    </p>
+    <p>
+        <label for="quantity">Quantity: </label>
+        <InputNumber id="quantity" @bind-Value="_shopping.Quantity" />
+        <InputSelect @bind-Value="_shopping.Product.ProductMeasurement" class="form-control-sm">
+            @foreach (var productMeasurement in Enum.GetValues(typeof(ProductMeasurement)))
+            {
+                <option value="@productMeasurement">@productMeasurement</option>
+            }
+        </InputSelect>
+    </p>
+    <p>
+        <label for="price">Price: </label>
+        <InputNumber id="price" @bind-Value="_shopping.Price" />
+    </p>
+
+    <button type="submit">Submit</button>
+</EditForm>
