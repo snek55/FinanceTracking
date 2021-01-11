@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceTracking", "FinanceTracking.csproj", "{64DF228D-A150-4E24-A7F4-4EA12E7AC3C8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F548D242-B8E6-4E8E-B94F-46B9C92D04BB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +38,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7B10A2B6-A69F-470C-BCCA-B9097A1E12F2}
+		SolutionGuid = {A95D998E-3EDB-49E9-97D0-D4C1E695A23F}
 	EndGlobalSection
 EndGlobal
