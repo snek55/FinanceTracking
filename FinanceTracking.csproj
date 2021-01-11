@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <WarningsAsErrors>true</WarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +24,15 @@
   <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove=".gitignore.local" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Shared\MainPage\TableMainPage.razor.cs">
+      <DependentUpon>TableMainPage.razor</DependentUpon>
+    </Compile>
+    <Compile Update="Shared\MainPage\EditFormMainPage.razor.cs">
+      <DependentUpon>EditFormMainPage.razor</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
