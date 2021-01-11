@@ -1,41 +1,40 @@
-﻿using Microsoft.AspNetCore.Components;
-using Blazored.LocalStorage;
-
-namespace FinanceTracking.Pages
+﻿namespace FinanceTracking.Pages
 {
-    public partial class ColorPicker
+	using Microsoft.AspNetCore.Components;
+	using Blazored.LocalStorage;
+	public partial class ColorPicker
     {
-        private string defaultcolor = "#ffffff";
+        private readonly string defaultcolor = "#ffffff";
 
         [Inject]
         private ISyncLocalStorageService localStorage { get; set; }
 
         private string CommBackgroundColor
         {
-            get => GetFromLocalStorage(nameof(CommBackgroundColor));
-            set => UpdateLocalStorage(nameof(CommBackgroundColor), value);
+            get => this.GetFromLocalStorage(nameof(this.CommBackgroundColor));
+            set => this.UpdateLocalStorage(nameof(this.CommBackgroundColor), value);
         }
 
         private string FontBackgroundColor 
         {
-            get => GetFromLocalStorage(nameof(FontBackgroundColor));
-            set => UpdateLocalStorage(nameof(FontBackgroundColor),value); 
+            get => this.GetFromLocalStorage(nameof(this.FontBackgroundColor));
+            set => this.UpdateLocalStorage(nameof(this.FontBackgroundColor),value); 
         }
 
         private string FontForegroundColor 
         {
-            get => GetFromLocalStorage(nameof(FontForegroundColor));
-            set => UpdateLocalStorage(nameof(FontForegroundColor), value);
+            get => this.GetFromLocalStorage(nameof(this.FontForegroundColor));
+            set => this.UpdateLocalStorage(nameof(this.FontForegroundColor), value);
         }
 
         private void UpdateLocalStorage(string k, string v)
         {
-            localStorage.SetItem(k, v);
+			this.localStorage.SetItem(k, v);
         }
 
         private string GetFromLocalStorage(string k)
         {
-            return localStorage.ContainKey(k)? localStorage.GetItem<string>(k): defaultcolor;
+            return this.localStorage.ContainKey(k)? this.localStorage.GetItem<string>(k): this.defaultcolor;
         }
     }
 }
