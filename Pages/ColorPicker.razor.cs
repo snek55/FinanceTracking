@@ -4,10 +4,10 @@
 	using Blazored.LocalStorage;
 	public partial class ColorPicker
     {
-        private readonly string defaultcolor = "#ffffff";
+        const string defaultcolor = "#ffffff";
 
         [Inject]
-        private ISyncLocalStorageService localStorage { get; set; }
+        private ISyncLocalStorageService LocalStorage { get; set; }
 
         private string CommBackgroundColor
         {
@@ -18,7 +18,7 @@
         private string FontBackgroundColor 
         {
             get => this.GetFromLocalStorage(nameof(this.FontBackgroundColor));
-            set => this.UpdateLocalStorage(nameof(this.FontBackgroundColor),value); 
+            set => this.UpdateLocalStorage(nameof(this.FontBackgroundColor), value); 
         }
 
         private string FontForegroundColor 
@@ -29,12 +29,14 @@
 
         private void UpdateLocalStorage(string k, string v)
         {
-			this.localStorage.SetItem(k, v);
+			this.LocalStorage.SetItem(k, v);
         }
 
         private string GetFromLocalStorage(string k)
         {
-            return this.localStorage.ContainKey(k)? this.localStorage.GetItem<string>(k): this.defaultcolor;
+            return this.LocalStorage.ContainKey(k) 
+				? this.LocalStorage.GetItem<string>(k) 
+				: defaultcolor;
         }
     }
 }
