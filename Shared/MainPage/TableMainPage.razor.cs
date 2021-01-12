@@ -20,7 +20,10 @@ namespace FinanceTracking.Shared.MainPage
             }
         }
 
-        private void BindCollection()
+		[Inject]
+		private Currency currentCurrency { get; set; }
+
+		private void BindCollection()
         {
             this._shopping.CollectionChanged += (_, _) => this.StateHasChanged();
         }

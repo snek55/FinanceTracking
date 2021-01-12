@@ -1,0 +1,9 @@
+﻿@using FinanceTracking.Enums
+
+    <select @bind="@CurrentCurrency">
+        @foreach (var vv in Enum.GetValues(typeof(Currencies)))
+        {
+            <option>@vv</option>
+        }
+    </select>
+
