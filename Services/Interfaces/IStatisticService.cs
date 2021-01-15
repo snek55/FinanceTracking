@@ -1,8 +1,8 @@
 ﻿namespace FinanceTracking.Services.Interfaces
 {
 	using System.Threading.Tasks;
-	using FinanceTracking.Entities;
-	using FinanceTracking.Entities.Interfaces;
+	using Entities;
+	using Entities.Interfaces;
 
 	public interface IStatisticService
 	{

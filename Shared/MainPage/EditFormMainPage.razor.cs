@@ -2,7 +2,7 @@
 {
 	using System.Collections.ObjectModel;
 	using Entities;
-	using FinanceTracking.Extensions;
+	using Extensions;
 	using Microsoft.AspNetCore.Components;
 
 	public partial class EditFormMainPage

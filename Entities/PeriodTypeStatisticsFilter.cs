@@ -2,9 +2,9 @@
 {
 	using System;
 	using System.Linq;
-	using FinanceTracking.Entities.Interfaces;
-	using FinanceTracking.Enums;
-	using FinanceTracking.Extensions;
+	using Entities.Interfaces;
+	using Enums;
+	using Extensions;
 
 	/// <summary>
 	/// Фильтр статистики по указанному периоду

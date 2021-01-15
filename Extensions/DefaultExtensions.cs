@@ -3,9 +3,9 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using FinanceTracking.Entities;
-	using FinanceTracking.Entities.Interfaces;
-	using FinanceTracking.Enums;
+	using Entities;
+	using Entities.Interfaces;
+	using Enums;
 
 	public static class DefaultExtensions
 	{

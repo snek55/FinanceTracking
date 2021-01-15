@@ -2,8 +2,8 @@
 {
 	using System;
 	using System.Linq;
-	using FinanceTracking.Entities.Interfaces;
-	using FinanceTracking.Extensions;
+	using Entities.Interfaces;
+	using Extensions;
 
 	/// <summary>
 	/// Фильтр статистики по вручную введенному промежутку дат

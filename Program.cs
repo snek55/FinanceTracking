@@ -1,15 +1,15 @@
 namespace FinanceTracking
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using Entities;
-    using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-    using Microsoft.Extensions.DependencyInjection;
-    using Blazored.LocalStorage;
+	using Blazored.LocalStorage;
+	using Entities;
 	using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 	using Microsoft.Extensions.DependencyInjection;
+	using Services;
+	using Services.Interfaces;
+	using System;
+	using System.Collections.ObjectModel;
+	using System.Net.Http;
+	using System.Threading.Tasks;
 
 	public class Program
 	{
@@ -23,13 +23,13 @@ namespace FinanceTracking
 			await builder.Build().RunAsync();
 		}
 
-        private static void RegisterServices(WebAssemblyHostBuilder builder)
-        {
-	        builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-          builder.Services.AddBlazoredLocalStorage();
-	        builder.Services.AddSingleton(new ObservableCollection<Shopping>());
+		private static void RegisterServices(WebAssemblyHostBuilder builder)
+		{
+			builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+			builder.Services.AddBlazoredLocalStorage();
+			builder.Services.AddSingleton(new ObservableCollection<Shopping>());
 			builder.Services.AddSingleton<IDataService, MockDataService>();
 			builder.Services.AddScoped<IStatisticService, StatisticService>();
-        }
-    }
+		}
+	}
 }

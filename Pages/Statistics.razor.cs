@@ -2,11 +2,11 @@
 {
 	using System;
 	using System.Threading.Tasks;
-	using FinanceTracking.Entities;
-	using FinanceTracking.Entities.Interfaces;
-	using FinanceTracking.Enums;
-	using FinanceTracking.Extensions;
-	using FinanceTracking.Services.Interfaces;
+	using Entities;
+	using Entities.Interfaces;
+	using Enums;
+	using Extensions;
+	using Services.Interfaces;
 	using Microsoft.AspNetCore.Components;
 
 	public partial class Statistics

@@ -4,9 +4,9 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Threading.Tasks;
-	using FinanceTracking.Entities;
-	using FinanceTracking.Enums;
-	using FinanceTracking.Services.Interfaces;
+	using Entities;
+	using Enums;
+	using Services.Interfaces;
 
 	/// <summary>
 	/// Мок для IDataService

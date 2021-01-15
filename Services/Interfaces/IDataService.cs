@@ -1,6 +1,6 @@
 ﻿namespace FinanceTracking.Services.Interfaces
 {
-	using FinanceTracking.Entities;
+	using Entities;
 	using System;
 	using System.Linq;
 	using System.Threading.Tasks;

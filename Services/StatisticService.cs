@@ -1,9 +1,9 @@
 ﻿namespace FinanceTracking.Services
 {
 	using System.Threading.Tasks;
-	using FinanceTracking.Entities;
-	using FinanceTracking.Entities.Interfaces;
-	using FinanceTracking.Services.Interfaces;
+	using Entities;
+	using Entities.Interfaces;
+	using Services.Interfaces;
 
 	/// <summary>
 	/// Сервис статистики, пока не придумал, как его расширить
