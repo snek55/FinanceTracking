@@ -21,7 +21,8 @@ public partial class TableMainPage
 		}
 	}
 
-	[Inject] private Currency currentCurrency { get; set; }
+	[Inject]
+	private Currency CurrentCurrency { get; set; }
 
 	private static char CurrencySymbol(Currencies currencies)
 	{

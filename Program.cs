@@ -1,37 +1,25 @@
-namespace FinanceTracking;
-
 using Blazored.LocalStorage;
-using Entities;
+using FinanceTracking;
+using FinanceTracking.Entities;
+using FinanceTracking.Services;
+using FinanceTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Services;
-using Services.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Net.Http;
-using System.Threading.Tasks;
 
-public class Program
-{
-	public static async Task Main(string[] args)
-	{
-		WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
-		builder.RootComponents.Add<App>("#app");
 
-		RegisterServices(builder);
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
 
-		await builder.Build().RunAsync();
-	}
+builder.Services.AddBlazoredLocalStorage();
 
-	private static void RegisterServices(WebAssemblyHostBuilder builder)
-	{
-		builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddSingleton(new ObservableCollection<Shopping>());
+builder.Services.AddSingleton<Currency>();
+builder.Services.AddSingleton<IDataService, MockDataService>();
 
-		builder.Services.AddSingleton(new ObservableCollection<Shopping>());
-		builder.Services.AddSingleton(new Currency());
-		builder.Services.AddSingleton<IDataService, MockDataService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-		builder.Services.AddScoped<IStatisticService, StatisticService>();
-		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-	}
-}
+await builder.Build().RunAsync();
