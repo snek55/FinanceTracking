@@ -8,9 +8,9 @@
         <td>@context.Product.Name</td>
         <td>@context.Quantity @GetUnitsMeasurement(context.Product.ProductMeasurement)</td>
         <td>
-            @context.Total @currentCurrency.CurType.ToString()
+            @context.Total @CurrencySymbol(currentCurrency.CurType)
             <br>
-            @context.Price@currentCurrency.CurType.ToString()/@GetUnitsMeasurement(context.Product.ProductMeasurement)
+            @context.Price @CurrencySymbol(currentCurrency.CurType)/@GetUnitsMeasurement(context.Product.ProductMeasurement)
         </td>
     </RowTemplate>
 </TableTemplate>
