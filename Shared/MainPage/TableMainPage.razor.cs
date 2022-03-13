@@ -1,41 +1,52 @@
-namespace FinanceTracking.Shared.MainPage
+namespace FinanceTracking.Shared.MainPage;
+
+using Entities;
+using Enums;
+using Microsoft.AspNetCore.Components;
+using System;
+using System.Collections.ObjectModel;
+
+public partial class TableMainPage
 {
-	using System.Collections.ObjectModel;
-	using Entities;
-	using Enums;
-	using Microsoft.AspNetCore.Components;
+	private ObservableCollection<Shopping> _shopping;
 
-	public partial class TableMainPage
+	[Inject]
+	private ObservableCollection<Shopping> Shopping
 	{
-		private ObservableCollection<Shopping> _shopping;
-
-		[Inject]
-		private ObservableCollection<Shopping> Shopping
+		get => this._shopping;
+		set
 		{
-			get => this._shopping;
-			set
-			{
-				this._shopping = value;
-				this.BindCollection();
-			}
+			this._shopping = value;
+			this.BindCollection();
 		}
+	}
 
-		private void BindCollection()
-		{
-			this._shopping.CollectionChanged += (_, _) => this.StateHasChanged();
-		}
+	[Inject]
+	private Currency CurrentCurrency { get; set; }
 
-		private string GetUnitsMeasurement(ProductMeasurement productMeasurement)
+	private static char CurrencySymbol(Currencies currencies)
+	{
+		return currencies switch
 		{
-			switch (productMeasurement)
-			{
-				case ProductMeasurement.Volume:
-					return "l";
-				case ProductMeasurement.Weight:
-					return "kg";
-				default:
-					return "pcs";
-			}
-		}
+			Currencies.AUD or Currencies.CAD or Currencies.USD => '$',
+			Currencies.RUB => '₽',
+			Currencies.EUR => '€',
+			_ => throw new NotImplementedException()
+		};
+	}
+
+	private void BindCollection()
+	{
+		this._shopping.CollectionChanged += (_, _) => this.StateHasChanged();
+	}
+
+	private static string GetUnitsMeasurement(ProductMeasurement productMeasurement)
+	{
+		return productMeasurement switch
+		{
+			ProductMeasurement.Volume => "l",
+			ProductMeasurement.Weight => "kg",
+			_ => "pcs"
+		};
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace FinanceTracking.Pages
+﻿namespace FinanceTracking.Shared.Settings
 {
 	using Microsoft.AspNetCore.Components;
 	using Blazored.LocalStorage;

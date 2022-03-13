@@ -7,6 +7,10 @@
     <RowTemplate>
         <td>@context.Product.Name</td>
         <td>@context.Quantity @GetUnitsMeasurement(context.Product.ProductMeasurement)</td>
-        <td>@context.Total <br> @context.Price/@GetUnitsMeasurement(context.Product.ProductMeasurement)</td>
+        <td>
+            @context.Total @CurrencySymbol(CurrentCurrency.CurType)
+            <br>
+            @context.Price @CurrencySymbol(CurrentCurrency.CurType)/@GetUnitsMeasurement(context.Product.ProductMeasurement)
+        </td>
     </RowTemplate>
 </TableTemplate>
