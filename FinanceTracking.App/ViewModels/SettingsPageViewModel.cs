@@ -1,7 +1,10 @@
 namespace FinanceTracking.App.ViewModels;
 
+using System.Text.Json.Serialization;
+
 public class SettingsPageViewModel : BindableObject
 {
+	[JsonIgnore]
 	public static readonly BindableProperty DefaultCurrencyProperty = BindableProperty.Create(
 		nameof(DefaultCurrency), typeof(string), typeof(SettingsPageViewModel));
 
