@@ -2,15 +2,23 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FinanceTracking.App.ViewModels"
              x:Class="FinanceTracking.App.Views.SettingsPage">
     <ContentPage.Content>
-        <Grid>
-            <Picker Title="Select a currency" ItemsSource="{Binding Currencies}"
-                    SelectedItem="{Binding DefaultCurrency}">
-            </Picker>
-            <Button Text="Save" VerticalOptions="End"
-                    HorizontalOptions="End" Clicked="OnSaveClicked">
-            </Button>
-        </Grid>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Select a currency:" />
+                <Picker ItemsSource="{Binding Currencies}"
+                        SelectedItem="{Binding DefaultCurrency}"
+                        x:DataType="viewModels:SettingsPageViewModel" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Select a language:" />
+                <Picker ItemsSource="{Binding Languages }"
+                        SelectedItem="{Binding DefaultLanguage }"
+                        x:DataType="viewModels:SettingsPageViewModel" />
+            </StackLayout>
+            <Button Text="Save" Clicked="OnSaveClicked"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
