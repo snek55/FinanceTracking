@@ -5,20 +5,20 @@
              xmlns:viewModels="clr-namespace:FinanceTracking.App.ViewModels"
              x:Class="FinanceTracking.App.Views.SettingsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Label Text="Select a currency:" />
+        <StackLayout StyleClass="outer-stack-layout">
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label StyleClass="label" Text="Select a currency:" />
                 <Picker ItemsSource="{Binding Currencies}"
                         SelectedItem="{Binding DefaultCurrency}"
                         x:DataType="viewModels:SettingsPageViewModel" />
             </StackLayout>
-            <StackLayout>
-                <Label Text="Select a language:" />
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label StyleClass="label" Text="Select a language:" />
                 <Picker ItemsSource="{Binding Languages }"
                         SelectedItem="{Binding DefaultLanguage }"
                         x:DataType="viewModels:SettingsPageViewModel" />
             </StackLayout>
-            <Button Text="Save" Clicked="OnSaveClicked"/>
+            <Button StyleClass="settings-button-save" Text="Save" Clicked="OnSaveClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
