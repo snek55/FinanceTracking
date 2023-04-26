@@ -3,12 +3,16 @@
     x:Class="FinanceTracking.App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FinanceTracking.App"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:FinanceTracking.App.Views"
+    BackgroundColor="DimGray"
+    FlyoutBehavior="Flyout">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
-
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate views:SettingsPage}"
+        Route="SettingsPage" />
 </Shell>

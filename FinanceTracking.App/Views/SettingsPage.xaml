@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FinanceTracking.App.ViewModels"
+             x:Class="FinanceTracking.App.Views.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout StyleClass="outer-stack-layout">
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label StyleClass="label" Text="Select a currency:" />
+                <Picker ItemsSource="{Binding Currencies}"
+                        SelectedItem="{Binding DefaultCurrency}"
+                        x:DataType="viewModels:SettingsPageViewModel" />
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label StyleClass="label" Text="Select a language:" />
+                <Picker ItemsSource="{Binding Languages }"
+                        SelectedItem="{Binding DefaultLanguage }"
+                        x:DataType="viewModels:SettingsPageViewModel" />
+            </StackLayout>
+            <!-- this is a blank -->
+            <!-- <StackLayout StyleClass="inner-stack-layout"> -->
+            <!--     <Label StyleClass="label" Text="Choose theme:" /> -->
+            <!-- </StackLayout> -->
+            <Button StyleClass="settings-button-save" Text="Save" Clicked="OnSaveClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

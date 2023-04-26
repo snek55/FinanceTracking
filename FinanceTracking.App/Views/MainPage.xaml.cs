@@ -1,4 +1,4 @@
-﻿namespace FinanceTracking.App;
+﻿namespace FinanceTracking.App.Views;
 
 public partial class MainPage : ContentPage
 {
