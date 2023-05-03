@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿namespace FinanceTracking.App;
 
-namespace FinanceTracking.App;
+using Microsoft.Extensions.Logging;
+using DevExpress.Maui;
 
 public static class MauiProgram
 {
@@ -8,6 +9,7 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
+			.UseDevExpress()
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{

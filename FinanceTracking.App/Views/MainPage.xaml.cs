@@ -6,17 +6,17 @@ public partial class MainPage : ContentPage
 
 	public MainPage()
 	{
-		this.InitializeComponent();
+		InitializeComponent();
 	}
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
-		this._count++;
+		_count++;
 
-		this.CounterBtn.Text = this._count == 1
-			? $"Clicked {this._count} time"
-			: $"Clicked {this._count} times";
+		CounterBtn.Text = _count == 1
+			? $"Clicked {_count} time"
+			: $"Clicked {_count} times";
 
-		SemanticScreenReader.Announce(this.CounterBtn.Text);
+		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 }
