@@ -1,7 +1,7 @@
-using ClassLibrary1.Entities;
+using FinanceTracking.DataBase.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassLibrary1;
+namespace FinanceTracking.DataBase;
 
 public class TestDbContext : DbContext
 {
