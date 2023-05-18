@@ -30,8 +30,9 @@ public static class MauiProgram
 
 	private static void InitServices(this MauiAppBuilder builder)
 	{
-		builder.Services.AddSingleton<MainPage>();
-		builder.Services.AddDbContext<TestDbContext>(option =>
+		builder.Services.AddSingleton<ProductsPage>();
+		builder.Services.AddSingleton<AddProductPage>();
+		builder.Services.AddDbContext<FinanceTrackingDbContext>(option =>
 			option.UseSqlite($"FileName={GetStr()}",
 				x => x.MigrationsAssembly(nameof(DataBase))));
 	}
