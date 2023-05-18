@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinanceTracking.DataBase;
 
-public class TestDbContext : DbContext
+public class FinanceTrackingDbContext : DbContext
 {
-    public TestDbContext()
+    public FinanceTrackingDbContext()
     {
     }
     
-    public TestDbContext(DbContextOptions<TestDbContext> options) : base(options)
+    public FinanceTrackingDbContext(DbContextOptions<DbContext> options) : base(options)
     {
         Database.Migrate();
     }
