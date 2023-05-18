@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinanceTracking.DataBase.Migrations
 {
-    [DbContext(typeof(TestDbContext))]
-    [Migration("20230516201224_Initial")]
+    [DbContext(typeof(FinanceTrackingDbContext))]
+    [Migration("20230518160625_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
