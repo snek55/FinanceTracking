@@ -4,6 +4,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinanceTracking.App.Views.AddProductPage">
     <ContentPage.Content>
-        
+        <StackLayout StyleClass="outer-stack-layout">
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label Text="Name of product:"></Label>
+                <Entry StyleClass="entry"></Entry>
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label Text="Price:"></Label>
+                <Entry Keyboard="Numeric" StyleClass="entry"></Entry>
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label Text="Is item solid?"></Label>
+                <CheckBox x:Name="SolidBox" CheckedChanged="OnCheckBoxCheckedChanged"></CheckBox>
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label x:Name="MeasureLabel"></Label>
+                <Entry Keyboard="Numeric" StyleClass="entry"></Entry>
+                <Label x:Name="MeasureType"></Label>
+            </StackLayout>
+            <Button Text="Save" Clicked="OnSaveButtonClicked"></Button>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
