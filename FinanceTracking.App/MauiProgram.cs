@@ -1,3 +1,4 @@
+﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using DevExpress.Maui;
 using FinanceTracking.App.Views;
@@ -19,6 +20,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
+			.UseMauiCommunityToolkit()
 			.InitServices();
 
 #if DEBUG
