@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using DevExpress.Maui;
 using FinanceTracking.App.Views;
 using FinanceTracking.DataBase;
@@ -34,7 +34,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<AddProductPage>();
 		builder.Services.AddDbContext<FinanceTrackingDbContext>(option =>
 			option.UseSqlite($"FileName={GetStr()}",
-				x => x.MigrationsAssembly(nameof(DataBase))));
+				x => x.MigrationsAssembly("FinanceTracking.DataBase")));
 	}
 
 	private static string GetStr()

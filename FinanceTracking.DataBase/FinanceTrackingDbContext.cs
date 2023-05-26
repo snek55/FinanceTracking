@@ -9,7 +9,7 @@ public class FinanceTrackingDbContext : DbContext
     {
     }
     
-    public FinanceTrackingDbContext(DbContextOptions<DbContext> options) : base(options)
+    public FinanceTrackingDbContext(DbContextOptions<FinanceTrackingDbContext> options) : base(options)
     {
         Database.Migrate();
     }
