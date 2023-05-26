@@ -1,39 +1,57 @@
+using FinanceTracking.App.ViewModels;
 using FinanceTracking.DataBase;
-using FinanceTracking.DataBase.Entities;
 
 namespace FinanceTracking.App.Views;
 
 public partial class AddProductPage : ContentPage
 {
-    public FinanceTrackingDbContext _dbContext { get; set; }
-    
-    private Product _product { get; set; }
+    private readonly FinanceTrackingDbContext _dbContext;
+    private readonly AddProductPageViewModel _addProductPageViewModel;
 
     public AddProductPage(FinanceTrackingDbContext dbContext)
     {
         InitializeComponent();
 
         _dbContext = dbContext;
-        _product = new Product();
+        _addProductPageViewModel = new AddProductPageViewModel();
 
-        InitFields(_product.IsSolid);
+        BindingContext = _addProductPageViewModel;
     }
 
-    private void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+    private async void OnSaveButtonClicked(object sender, EventArgs e)
     {
-        _product.IsSolid = e.Value;
-        InitFields(e.Value);
+        if (IsFieldsNotOk())
+        {
+            return;
+        }
+
+        await _dbContext.Products.AddAsync(_addProductPageViewModel.Product);
+        await _dbContext.SaveChangesAsync();
+
+        await Navigation.PopAsync();
     }
 
-    private void InitFields(bool isSolid)
+    private bool IsFieldsNotOk()
     {
-        SolidBox.IsChecked = isSolid;
-        MeasureLabel.Text = isSolid ? "Weight:" : "Volume:";
-        MeasureType.Text = isSolid ? "gram" : "milliliters";
-    }
 
-    private void OnSaveButtonClicked(object sender, EventArgs e)
-    {
-        throw new NotImplementedException();
+        if (ProductNameValidator.IsNotValid)
+        {
+            DisplayAlert("Error", "Name is required", "Ok");
+            return true;
+        }
+        
+        if (ProductPriceValidator.IsNotValid)
+        {
+            DisplayAlert("Error", "Price must be more greater than zero", "Ok");
+            return true;
+        }
+        
+        if (ProductMeasureValidator.IsNotValid)
+        {
+            DisplayAlert("Error", "Measure value must be greater than zero", "Ok");
+            return true;
+        }
+
+        return false;
     }
 }

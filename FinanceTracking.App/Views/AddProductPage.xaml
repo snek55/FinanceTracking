@@ -2,25 +2,78 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:FinanceTracking.App.ViewModels"
              x:Class="FinanceTracking.App.Views.AddProductPage">
     <ContentPage.Content>
-        <StackLayout StyleClass="outer-stack-layout">
+        <StackLayout StyleClass="outer-stack-layout" x:DataType="viewModels:AddProductPageViewModel">
             <StackLayout StyleClass="inner-stack-layout">
                 <Label Text="Name of product:"></Label>
-                <Entry StyleClass="entry"></Entry>
+                <Entry StyleClass="entry" Text="{Binding Product.Name}">
+                    <Entry.Behaviors>
+                        <toolkit:TextValidationBehavior
+                            x:Name="ProductNameValidator"
+                            Flags="ValidateOnAttaching, ValidateOnValueChanged" 
+                            MinimumLength="1"/>
+                    </Entry.Behaviors>
+                </Entry>
             </StackLayout>
             <StackLayout StyleClass="inner-stack-layout">
                 <Label Text="Price:"></Label>
-                <Entry Keyboard="Numeric" StyleClass="entry"></Entry>
+                <Entry Keyboard="Numeric" StyleClass="entry" Text="{Binding Product.Cost}">
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior
+                            x:Name="ProductPriceValidator"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="0"/>
+                    </Entry.Behaviors>
+                </Entry>
             </StackLayout>
             <StackLayout StyleClass="inner-stack-layout">
-                <Label Text="Is item solid?"></Label>
-                <CheckBox x:Name="SolidBox" CheckedChanged="OnCheckBoxCheckedChanged"></CheckBox>
+                <Label Text="Is item solid?"/>
+                <CheckBox x:Name="SolidBox" IsChecked="{Binding Product.IsSolid}"/>
             </StackLayout>
             <StackLayout StyleClass="inner-stack-layout">
-                <Label x:Name="MeasureLabel"></Label>
-                <Entry Keyboard="Numeric" StyleClass="entry"></Entry>
-                <Label x:Name="MeasureType"></Label>
+                <Label>
+                    <Label.Triggers>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="True">
+                            <Setter Property="Text" Value="Weight:"/>
+                        </DataTrigger>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="False">
+                            <Setter Property="Text" Value="Volume:"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Entry Keyboard="Numeric" StyleClass="entry" Text="{Binding Product.Weight}">
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior
+                            x:Name="ProductMeasureValidator"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="0"/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label>
+                    <Label.Triggers>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="True">
+                            <Setter Property="Text" Value="Kg"/>
+                        </DataTrigger>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="False">
+                            <Setter Property="Text" Value="L"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
             </StackLayout>
             <Button Text="Save" Clicked="OnSaveButtonClicked"></Button>
         </StackLayout>
