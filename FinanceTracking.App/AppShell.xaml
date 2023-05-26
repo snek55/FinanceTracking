@@ -8,6 +8,10 @@
     FlyoutBehavior="Flyout">
 
     <ShellContent
+        Title="Products"
+        ContentTemplate="{DataTemplate views:ProductsPage}"
+        Route="ProductsPage" />
+    <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
