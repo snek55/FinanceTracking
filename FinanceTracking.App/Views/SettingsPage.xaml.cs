@@ -10,28 +10,28 @@ public partial class SettingsPage : ContentPage
 
 	public SettingsPage()
 	{
-		this.InitializeComponent();
+		InitializeComponent();
 
-		this.SettingsPath = Path.Combine(FileSystem.Current.AppDataDirectory, SettingsFileName);
+		SettingsPath = Path.Combine(FileSystem.Current.AppDataDirectory, SettingsFileName);
 	}
 
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 
-		var settings = await this.LoadData();
+		var settings = await LoadData();
 
-		this.BindingContext = settings;
+		BindingContext = settings;
 	}
 
 	private async Task<SettingsPageViewModel> LoadData()
 	{
-		if (!File.Exists(this.SettingsPath))
+		if (!File.Exists(SettingsPath))
 		{
-			return await this.CreateFile();
+			return await CreateFile();
 		}
 
-		using var reader = new StreamReader(this.SettingsPath);
+		using var reader = new StreamReader(SettingsPath);
 		var data = await reader.ReadToEndAsync();
 
 		var settings = JsonSerializer.Deserialize<SettingsPageViewModel>(data);
@@ -41,7 +41,7 @@ public partial class SettingsPage : ContentPage
 
 	private async Task<SettingsPageViewModel> CreateFile()
 	{
-		await using StreamWriter writer = new(this.SettingsPath);
+		await using StreamWriter writer = new(SettingsPath);
 
 		var settings = new SettingsPageViewModel();
 
@@ -54,10 +54,10 @@ public partial class SettingsPage : ContentPage
 
 	async void OnSaveClicked(object sender, EventArgs args)
 	{
-		await using var outputStream = File.OpenWrite(this.SettingsPath);
+		await using var outputStream = File.OpenWrite(SettingsPath);
 		await using var streamWriter = new StreamWriter(outputStream);
 
-		var json = JsonSerializer.Serialize(this.BindingContext);
+		var json = JsonSerializer.Serialize(BindingContext);
 
 		await streamWriter.WriteAsync(json);
 	}

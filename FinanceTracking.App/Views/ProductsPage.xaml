@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FinanceTracking.App.ViewModels"
+             xmlns:dataGrid="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="FinanceTracking.App.Views.ProductsPage">
+    <StackLayout StyleClass="outer-stack-layout">
+        <StackLayout StyleClass="inner-stack-layout">
+            <Entry 
+                x:Name="ProductNameEntry"
+                Placeholder="Write the product name"
+                ClearButtonVisibility="WhileEditing"
+                TextChanged="OnSearch"/>
+            <Button StyleClass="settings-button-save" Text="Add Product" Clicked="OnAddClicked"/>
+        </StackLayout>
+        <dataGrid:DataGridView ItemsSource="{Binding Products}"
+                               EditorShowMode="DoubleTap" x:DataType="viewModels:ProductsPageViewModel">
+            <dataGrid:DataGridView.Columns>
+                <dataGrid:TextColumn FieldName="Name" 
+                                     MinWidth="130" VerticalContentAlignment="Center" />
+                <dataGrid:TextColumn FieldName="Cost" 
+                                     MinWidth="130" VerticalContentAlignment="Center" />
+                <dataGrid:TextColumn FieldName="Weight" 
+                                     MinWidth="130" VerticalContentAlignment="Center" />
+            </dataGrid:DataGridView.Columns>
+        </dataGrid:DataGridView>
+    </StackLayout>
+</ContentPage>

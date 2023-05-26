@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:FinanceTracking.App.ViewModels"
+             x:Class="FinanceTracking.App.Views.AddProductPage">
+    <ContentPage.Content>
+        <StackLayout StyleClass="outer-stack-layout" x:DataType="viewModels:AddProductPageViewModel">
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label Text="Name of product:"></Label>
+                <Entry StyleClass="entry" Text="{Binding Product.Name}">
+                    <Entry.Behaviors>
+                        <toolkit:TextValidationBehavior
+                            x:Name="ProductNameValidator"
+                            Flags="ValidateOnAttaching, ValidateOnValueChanged" 
+                            MinimumLength="1"/>
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label Text="Price:"></Label>
+                <Entry Keyboard="Numeric" StyleClass="entry" Text="{Binding Product.Cost}">
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior
+                            x:Name="ProductPriceValidator"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="0"/>
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label Text="Is item solid?"/>
+                <CheckBox x:Name="SolidBox" IsChecked="{Binding Product.IsSolid}"/>
+            </StackLayout>
+            <StackLayout StyleClass="inner-stack-layout">
+                <Label>
+                    <Label.Triggers>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="True">
+                            <Setter Property="Text" Value="Weight:"/>
+                        </DataTrigger>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="False">
+                            <Setter Property="Text" Value="Volume:"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Entry Keyboard="Numeric" StyleClass="entry" Text="{Binding Product.Weight}">
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior
+                            x:Name="ProductMeasureValidator"
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="0"/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label>
+                    <Label.Triggers>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="True">
+                            <Setter Property="Text" Value="Kg"/>
+                        </DataTrigger>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding IsChecked, Source={x:Reference SolidBox}}"
+                            Value="False">
+                            <Setter Property="Text" Value="L"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+            <Button Text="Save" Clicked="OnSaveButtonClicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
