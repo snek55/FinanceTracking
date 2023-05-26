@@ -17,10 +17,8 @@ namespace FinanceTracking.DataBase.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    MinPrice = table.Column<decimal>(type: "TEXT", nullable: false),
-                    MaxPrice = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Cost = table.Column<decimal>(type: "TEXT", nullable: false),
                     IsSolid = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Volume = table.Column<int>(type: "INTEGER", nullable: false),
                     Weight = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

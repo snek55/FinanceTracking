@@ -22,21 +22,15 @@ namespace FinanceTracking.DataBase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsSolid")
                         .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("MaxPrice")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("MinPrice")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Volume")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Weight")
                         .HasColumnType("INTEGER");
